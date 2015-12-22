@@ -21,8 +21,16 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="MemeMe" id="fDJ-IJ-VQP">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="3sO-aH-MjV"/>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="jDY-zk-L1x"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="3sO-aH-MjV">
+                                            <connections>
+                                                <action selector="share:" destination="BYZ-38-t0r" id="jdB-Eb-GCl"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="jDY-zk-L1x">
+                                            <connections>
+                                                <action selector="cancel:" destination="BYZ-38-t0r" id="xEN-vT-ZIl"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -30,8 +38,16 @@
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
                                     <barButtonItem systemItem="flexibleSpace" id="Aes-u0-Jk0"/>
-                                    <barButtonItem systemItem="camera" id="nDA-Pu-U8u"/>
-                                    <barButtonItem systemItem="organize" id="lja-zk-vQC"/>
+                                    <barButtonItem systemItem="camera" id="nDA-Pu-U8u">
+                                        <connections>
+                                            <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="T7e-pm-Zdq"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="organize" id="lja-zk-vQC">
+                                        <connections>
+                                            <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" id="JPY-of-kYP"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem systemItem="flexibleSpace" id="DYX-hI-SwX"/>
                                 </items>
                             </toolbar>
@@ -75,6 +91,16 @@
                             <constraint firstItem="qtZ-tW-zEh" firstAttribute="top" secondItem="YtO-VL-7MQ" secondAttribute="bottom" constant="-86" id="xwm-M5-3zw"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bottomText" destination="1jL-dc-tVW" id="fkX-iN-bUd"/>
+                        <outlet property="cameraButton" destination="nDA-Pu-U8u" id="GCg-KV-FHp"/>
+                        <outlet property="cancelButton" destination="jDY-zk-L1x" id="SVH-Ks-CTv"/>
+                        <outlet property="imageView" destination="qtZ-tW-zEh" id="wgv-cw-9gH"/>
+                        <outlet property="navigationBar" destination="8hE-2r-qZE" id="sDd-Et-gGL"/>
+                        <outlet property="shareButton" destination="3sO-aH-MjV" id="qWO-h8-jAV"/>
+                        <outlet property="toolBar" destination="kpx-8R-h4p" id="d3C-a2-Z5z"/>
+                        <outlet property="topText" destination="YtO-VL-7MQ" id="02F-h1-zCo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
