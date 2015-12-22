@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeEditorViewController.swift
 //  MemeMe
 //
 //  Created by Abdelrahman Mohamed on 12/22/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController ,UIImagePickerControllerDelegate ,UINavigationControllerDelegate {
+class MemeEditorViewController: UIViewController ,UIImagePickerControllerDelegate ,UINavigationControllerDelegate {
 
     
     @IBOutlet weak var imageView: UIImageView!
@@ -59,13 +59,13 @@ class ViewController: UIViewController ,UIImagePickerControllerDelegate ,UINavig
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         shareButton.enabled = (imageView.image != nil)
         
-        self.subscribeToKeyboardNotifications()
+        subscribeToKeyboardNotifications()
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
-        self.unsubscribeFromKeyboardNotifications()
+        unsubscribeFromKeyboardNotifications()
     }
     
     func subscribeToKeyboardNotifications() {
@@ -82,13 +82,13 @@ class ViewController: UIViewController ,UIImagePickerControllerDelegate ,UINavig
     
     func keyboardWillShow(notification: NSNotification) {
         if bottomText.isFirstResponder() {
-            self.view.frame.origin.y -= getKeyboardHeight(notification)
+            view.frame.origin.y -= getKeyboardHeight(notification)
         }
     }
     
     func keyboardWillHide(notification: NSNotification) {
         if bottomText.isFirstResponder() {
-            self.view.frame.origin.y += getKeyboardHeight(notification)
+            view.frame.origin.y += getKeyboardHeight(notification)
         }
     }
     
@@ -104,7 +104,7 @@ class ViewController: UIViewController ,UIImagePickerControllerDelegate ,UINavig
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
-        self.presentViewController(imagePicker, animated: true, completion: nil)
+        presentViewController(imagePicker, animated: true, completion: nil)
     }
 
     @IBAction func pickAnImageFromAlbum(sender: UIBarButtonItem) {
@@ -112,27 +112,27 @@ class ViewController: UIViewController ,UIImagePickerControllerDelegate ,UINavig
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        self.presentViewController(imagePicker, animated: true, completion: nil)
+        presentViewController(imagePicker, animated: true, completion: nil)
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            self.imageView.image = image
+            imageView.image = image
             topText.hidden = false
             bottomText.hidden = false
             shareButton.enabled = true
             cancelButton.enabled = true
         }
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
 
     func generateMemedImage() -> UIImage {
@@ -140,8 +140,8 @@ class ViewController: UIViewController ,UIImagePickerControllerDelegate ,UINavig
         toolBar.hidden = true
         navigationController?.setNavigationBarHidden(true, animated: false)
         
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.drawViewHierarchyInRect(view.frame, afterScreenUpdates: true)
         let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
@@ -167,7 +167,7 @@ class ViewController: UIViewController ,UIImagePickerControllerDelegate ,UINavig
                 self.dismissViewControllerAnimated(false, completion: nil)
             }
         }
-        self.presentViewController(activityViewController, animated: false, completion: nil)
+        presentViewController(activityViewController, animated: false, completion: nil)
 
     }
     
