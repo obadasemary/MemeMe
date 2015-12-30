@@ -6,6 +6,7 @@
 //  Copyright © 2015 Abdelrahman Mohamed. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 class MemesTableViewController: UITableViewController {
@@ -38,7 +39,7 @@ class MemesTableViewController: UITableViewController {
         
         let detailController = storyboard!.instantiateViewControllerWithIdentifier("MemeDetailViewController") as! MemeDetailViewController
         detailController.meme = memes[indexPath.row]
-        navigationController?.pushViewController(detailController, animated: true)
+        navigationController!.pushViewController(detailController, animated: true)
     }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
