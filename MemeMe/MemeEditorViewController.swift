@@ -154,7 +154,6 @@ class MemeEditorViewController: UIViewController ,UIImagePickerControllerDelegat
     func save() {
         let meme = Meme (bottomText: bottomText.text!, topText: topText.text!, image: imageView.image!, memedImage: generateMemedImage())
         (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
-        
     }
     
     @IBAction func share(sender: UIBarButtonItem) {
