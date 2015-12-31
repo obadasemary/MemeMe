@@ -43,7 +43,6 @@ class MemeEditorViewController: UIViewController ,UIImagePickerControllerDelegat
         bottomText.hidden = true
         
         shareButton.enabled = false
-        cancelButton.enabled = false
     }
     
     func setupTextField(textField: UITextField!, defaultText: String, textFieldDelegate: TextFieldDelegate){
@@ -122,7 +121,6 @@ class MemeEditorViewController: UIViewController ,UIImagePickerControllerDelegat
             topText.hidden = false
             bottomText.hidden = false
             shareButton.enabled = true
-            cancelButton.enabled = true
         }
         dismissViewControllerAnimated(true, completion: nil)
     }
